@@ -1,6 +1,7 @@
 package br.com.udemy.produto.produto.repository;
 
 import br.com.udemy.produto.produto.model.Produto;
+import br.com.udemy.produto.produto.model.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class ProdutoRepository {
         Optional<Produto> produtoEncontrado = obterPorId(produto.getId());
 
         if (produtoEncontrado.isEmpty()){
-            throw new InputMismatchException("Produto não econtrado");
+            throw new ResourceNotFoundException("Produto não econtrado");
         }
 
         deletar(produto.getId());
